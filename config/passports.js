@@ -9,21 +9,22 @@ module.exports = function(){
     passport.use(
         new LocalStrategy({ usernameField: 'username' , passwordField: 'password'}, function(username, password, done){
             //Match User
-            User.findOne({idNumber: username})
+            User.findOne({phone: phone})
                 .then(user => {
                     if(!user){
                         return done(null,false, {message: 'کد ملی یافت نشد!'});
                     }
                     // Match password
-                    bcrypt.compare(password, user.password, function(err, isMatch){
-                        if(err) throw err;
-                        if(isMatch){
-                            return done(null, user);
-                        }
-                        else {
-                            return done(null, false, {message: 'رمز عبور اشتباه میباشد!'});
-                        }
-                    });
+                    return done(null, user);
+                    // bcrypt.compare(password, user.password, function(err, isMatch){
+                    //     if(err) throw err;
+                    //     if(isMatch){
+                    //         return done(null, user);
+                    //     }
+                    //     else {
+                    //         return done(null, false, {message: 'رمز عبور اشتباه میباشد!'});
+                    //     }
+                    // });
                 })
                 .catch(err => console.log(err));
 

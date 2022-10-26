@@ -1,0 +1,160 @@
+body{
+    background-color: white;
+}
+@media only screen and (min-width: 800px) {
+    .logo{
+        width: 6%;
+        margin: auto;
+        margin-top: 2vw;
+    }
+    .logo img{
+        width: 100%;
+        display: block;
+    }
+    .register-view {
+        width: 30%;
+        padding: 0.8vw;
+        margin: auto;
+        margin-top: 2vw;
+        border-radius: 0.5vw;
+        box-shadow: 0 0.1vw 0.1vw 0.1vw rgba(0, 0, 0, 0.1);
+    }
+    .register-view h1{
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        color: var(--darkblue);
+        text-align: center;
+        border-bottom: var(--lightergray) 0.1vw solid;
+        padding-bottom: 0.5vw;
+    }
+    .register-view p{
+        font-family: 'iransans';
+        font-size: 0.8vw;
+        color: var(--text);
+        text-align: center;
+    }
+    .register-view form{
+        width: 95%;
+        margin: auto;
+        margin-top: 2vw;
+    }
+    .register-view form .text-input-view{
+        margin-top: 1vw;
+    }
+    .register-view form .text-input-view label{
+        font-family: 'iransans';
+        font-size: 0.9vw;
+        color: var(--text);
+    }
+    .register-view form .text-input-view input{
+        display: block;
+        border: var(--darkblue) 0.1vw solid;
+        font-family: 'iransans';
+        font-size: 1vw;
+        padding: 0.3vw 2vw;
+        width: 83%;
+        border-radius: 1vw;
+    }
+    .register-view form .text-input-view input.centered{
+        text-align: center;
+        direction: ltr;
+    }
+    .register-view form button.submit{
+        background-color: var(--darkblue);
+        /* margin: auto; */
+        display: block;
+        width: 98%;
+        text-align: center;
+        font-family: 'iransans';
+        font-size: 1vw;
+        color: white;
+        border: none;
+        padding: 0.3vw 2vw;
+        border-radius: 1vw;
+        margin-top: 2vw;
+        margin-bottom: 1vw;
+        cursor: pointer;
+    }
+    .register-view form button.submit:hover{
+        background-color: var(--green);
+    }
+}
+@media only screen and (max-width: 800px) {
+    .logo{
+        width: 20%;
+        margin: auto;
+        margin-top: 5vw;
+    }
+    .logo img{
+        width: 100%;
+        display: block;
+    }
+    .register-view {
+        width: 90%;
+        padding: 0.8vw;
+        margin: auto;
+        margin-top: 2vw;
+        border-radius: 1.5vw;
+        box-shadow: 0 0.3vw 0.5vw 0.5vw rgba(0, 0, 0, 0.1);
+    }
+    .register-view h1{
+        font-family: 'iransans';
+        font-size: 3.1vw;
+        color: var(--darkblue);
+        text-align: center;
+        border-bottom: var(--lightergray) 0.1vw solid;
+        padding-bottom: 0.5vw;
+    }
+    .register-view p{
+        font-family: 'iransans';
+        font-size: 2.8vw;
+        color: var(--text);
+        text-align: center;
+    }
+    .register-view form{
+        width: 95%;
+        margin: auto;
+        margin-top: 4vw;
+    }
+    .register-view form .text-input-view{
+        margin-top: 2vw;
+    }
+    .register-view form .text-input-view label{
+        font-family: 'iransans';
+        font-size: 2.9vw;
+        color: var(--text);
+    }
+    .register-view form .text-input-view input{
+        display: block;
+        border: var(--darkblue) 0.1vw solid;
+        font-family: 'iransans';
+        font-size: 3vw;
+        padding: 1vw 4vw;
+        width: 86%;
+        border-radius: 3vw;
+        text-align: center;
+    }
+    .register-view form button.submit{
+        background-color: var(--darkblue);
+        /* margin: auto; */
+        display: block;
+        width: 96%;
+        text-align: center;
+        font-family: 'iransans';
+        font-size: 3vw;
+        color: white;
+        border: none;
+        padding: 1vw 4vw;
+        border-radius: 3vw;
+        margin-top: 6vw;
+        margin-bottom: 3vw;
+        cursor: pointer;
+    }
+    .register-view form button.submit:hover{
+        background-color: var(--green);
+    }
+    .register-view form .text-input-view input.centered{
+        text-align: center;
+        direction: ltr;
+    }
+}

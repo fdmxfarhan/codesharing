@@ -1,49 +1,36 @@
-extends layout
-block styles
-    link(rel="stylesheet", href="/css/users.css")
+doctype html
 
-block content
-    //- include partials/messages
-    -if(errors){
-        .errors-area
-            -for(var i=0; i<errors.length; i++){
-                .error(id='error#{i}')
-                    i.fa.fa-warning
-                    h1= errors[i].msg
-                    i.fa.fa-times.close-error
-                    .time-interval(id='time#{i}')
-            -}
-    -}
-    .register
-        h1.title 
-            i.fa.fa-user-plus 
-            | ثبت نام 
-        form(action="/users/register" id="register" method="POST")
-            .text-input-area
-                input.textinput(type="text" placeholder="نام" name="firstName" value= "#{ typeof firstName != 'undefined' ? firstName: '' }")
-                i.fa.fa-pencil
-            .text-input-area
-                input.textinput(type="text" placeholder="نام خانوادگی" name="lastName" value= "#{ typeof lastName != 'undefined' ? lastName: '' }")
-                i.fa.fa-pencil
-            //- .text-input-area
-            //-     input.textinput(type="text" placeholder="نشانی" name="address" value= "#{ typeof address != 'undefined' ? address: '' }")
-            //-     i.fa.fa-map-marker
-            .text-input-area
-                input.textinput(type="text" placeholder="تلفن" name="phone" value= "#{ typeof phone != 'undefined' ? phone: '' }")
-                i.fa.fa-phone
-            //- .text-input-area
-            //-     input.textinput(type="text" placeholder="نام مدرسه" name="school" value= "#{ typeof school != 'undefined' ? school: '' }")
-            //-     i.fa.fa-book
-            .text-input-area
-                input.textinput(type="text" placeholder="کد ملی" name="idNumber" value= "#{ typeof idNumber != 'undefined' ? idNumber: '' }")
-                i.fa.fa-user
-            .text-input-area
-                input.textinput(type="password" placeholder="رمز عبور" name="password" value= "#{ typeof psw != 'undefined' ? psw: '' }")
-                i.fa.fa-key
-            .text-input-area
-                input.textinput(type="password" placeholder="تایید رمز عبور" name="configpassword" value= "#{ typeof configpsw != 'undefined' ? configpsw: '' }")
-                i.fa.fa-check
-            .text-input-area
-                button.submit(type="submit") ثبت نام
-            a.link(href="/users/login") قبلا عضو شده اید؟
-    script(src="/js/users.js")
+html
+    head
+        title سامانه اشتراک گذاری غذا
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel="shortcut icon", href="/img/logo.png", type="image/x-icon")
+        script(src="/js/jquery-3.5.1.min.js")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        //- meta(name="theme-color" content="#050507")
+        //- script(src="/js/index.js")
+        link(rel="stylesheet", href="/css/layout.css")
+        link(rel="stylesheet", href="/css/register.css")
+
+        block styles
+    body
+        .black-modal
+        //- include ./components/navbar
+        .logo 
+            img(src="/img/logo.png")
+        .register-view 
+            h1 تکمیل اطلاعات پروفایل
+            p لطفا اطلاعات پروفایل خود را تکمیل نمایید.
+            form(action="/users/send-sms" method="POST") 
+                .text-input-view 
+                    label(for="fullname") نام و نام خانوادگی: 
+                    input(type="text" name="fullname" placeholder="نام و نام خانوادگی")
+                .text-input-view 
+                    label(for="studentNumber") شماره دانشجویی: 
+                    input(type="text" name="studentNumber" placeholder="شماره دانشجویی")
+                .text-input-view 
+                    label(for="sex") نام مشاور املاک: 
+                    input(type="text" name="sex" placeholder="نام و نام خانوادگی")
+                button.submit(type="submit") ارسال کد تایید
+        //- include ./components/footer
+        script(src="/js/numberFixer.js") 

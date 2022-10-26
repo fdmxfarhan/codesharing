@@ -2,14 +2,35 @@ doctype html
 
 html
     head
-        title Register
+        title سامانه اشتراک گذاری غذا
         link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
         link(rel="shortcut icon", href="/img/logo.png", type="image/x-icon")
         script(src="/js/jquery-3.5.1.min.js")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         //- meta(name="theme-color" content="#050507")
         //- script(src="/js/index.js")
-        link(rel='stylesheet', href='/css/home.css')
-    
+        link(rel="stylesheet", href="/css/layout.css")
+        link(rel="stylesheet", href="/css/register.css")
+
+        block styles
     body
-        h1 This is home page
+        .black-modal
+        //- include ./components/navbar
+        .logo 
+            img(src="/img/logo.png")
+        .register-view 
+            h1 سامانه اشتراک گذاری غذا
+            p برای ورود به سامانه لطفا شماره تلفن همراه خود را وارد نموده و آن را تایید نمایید.
+            form(action="/users/send-sms" method="POST") 
+                //- .text-input-view 
+                //-     label(for="name") نام مشاور املاک: 
+                //-     input(type="text" name="name" placeholder="نام و نام خانوادگی")
+                //- .text-input-view 
+                //-     label(for="address") آدرس: 
+                //-     input(type="text" name="address" placeholder="نام و نام خانوادگی")
+                .text-input-view 
+                    label(for="phone") شماره تلفن: 
+                    input.centered(type="text" name="phone" placeholder="09XX-XXX-XXXX")
+                button.submit(type="submit") ارسال کد تایید
+        //- include ./components/footer
+        script(src="/js/numberFixer.js") 

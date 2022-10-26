@@ -1,0 +1,52 @@
+.errors-area{
+    /* background-color: coral; */
+    position: fixed;
+    width: 40vw;
+    bottom: 0;
+    left: 2vw;
+    z-index: 100;
+}
+.errors-area .error{
+    background-color: rgba(220, 20, 20, 0.842);
+    position: relative;
+    margin: 1vw;
+    border-radius: 1vw;
+    color: white;
+    padding: 0.7vw 1vw;
+    padding-bottom: 0;
+}
+.errors-area .error.green-error{
+    background-color: rgba(1, 170, 9, 0.842);
+    position: relative;
+    margin: 1vw;
+    border-radius: 1vw;
+    color: white;
+    padding: 0.7vw 1vw;
+    padding-bottom: 0;
+}
+
+.errors-area .error h1{
+    display: inline-block;
+    padding-right: 0;
+    margin: 0;
+    font-family: 'iransans';
+    font-size: 1.2vw;
+}
+.errors-area .error i{
+    display: inline-block;
+    padding-left: 1vw;
+}
+.errors-area .error i.close-error{
+    position: absolute;
+    top: 1vw;
+    left: 0;
+    cursor: pointer;
+}
+.errors-area .error .time-interval{
+    background-color: rgba(255, 255, 255, 0.664);
+    /* position: absolute;
+    bottom: 0; */
+    width: 0;
+    height: 0.3vw;
+    margin-top: 0.5vw;
+}

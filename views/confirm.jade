@@ -1,0 +1,32 @@
+doctype html
+
+html
+    head
+        title فایل استور
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel="shortcut icon", href="/img/logo.png", type="image/x-icon")
+        script(src="/js/jquery-3.5.1.min.js")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        //- meta(name="theme-color" content="#050507")
+        //- script(src="/js/index.js")
+        link(rel="stylesheet", href="/css/layout.css")
+        link(rel="stylesheet", href="/css/register.css")
+        link(rel="stylesheet", href="/css/components/messages.css")
+
+        block styles
+    body
+        .black-modal
+        include ./components/messages
+        .logo 
+            img(src="/img/logo.png")
+        .register-view 
+            h1 تایید تلفن همراه
+            p لطفا کد تایید ارسال شده به شماره تلفن #{user.phone} را وارد نمایید
+            form(action="/login" method="POST") 
+                input.hidden(type="text" name="userID" value="#{userID}")
+                .text-input-view 
+                    label(for="confcode") کد تایید: 
+                    input(type="text" name="confcode" placeholder="کد تایید")
+                button.submit(type="submit") ثبت
+        //- include ./components/footer
+        script(src="/js/numberFixer.js") 

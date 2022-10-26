@@ -5,6 +5,9 @@ var User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const mail = require('../config/mail');
 const passport = require('passport');
+const sms2 = require('../config/sms2');
+const sms = require('../config/sms');
+const generateCode = require('../config/generateCode');
 
 router.get('/register', (req, res, next) => {
     if(req.user)
@@ -70,21 +73,52 @@ router.post('/register', (req, res, next) => {
     }  
 });
   
+router.post('/send-sms', (req, res, next) => {
+    var {phone} = req.body;
+    var smsCode = generateCode(6);
+    sms(phone, `کد تایید شما ${smsCode}`);
+    User.findOne({phone}, (err, user) => {
+        if(user){
+            User.updateMany({_id: user._id}, {$set: {smsCode}}, (err, doc) => {
+                res.render('./confirm', {user});
+            })
+        }
+        else{
+            var newUser = new User({
+                phone,
+                smsCode,
+                role: 'user',
+                dateOfRegisteration: new Date(),
+                profileCompeleted: false,
+            });
+            newUser.save().then(doc => {
+                res.render('./confirm', {user: newUser});
+            }).catch(err => console.log(err));
+        }
+    })
+})
 router.post('/login', function(req, res, next){
-    const { username, password} = req.body;
-    let errors = [];
-    /// check required
-    if(!username || !password){
-      errors.push({msg: 'لطفا موارد خواسته شده را کامل کنید!'});
-    }
-    if(errors.length > 0 ){
-      res.render('login', { errors, username, password});
-    }
-    passport.authenticate('local', {
-      successRedirect: '/dashboard?login=true',
-      failureRedirect: '/users/login',
-      failureFlash: true
-    })(req, res, next);
+    const { userID, confcode } = req.body;
+    User.findById(userID, (err, user) => {
+        if(user.smsCode == confcode){
+            if(user.profileCompeleted){
+                passport.authenticate('local', {
+                    successRedirect: '/dashboard?login=true',
+                    failureRedirect: '/users/login',
+                    failureFlash: true
+                })(req, res, next);
+            }
+            else{
+                res.render('./register', {user});
+            }
+        }
+        else{
+            res.render('./confirm', {
+                user,
+                errors: [{msg: 'کد تایید اشتباه وارد شده.'}],
+            });
+        }
+    })
 });
   
 // Logout handle

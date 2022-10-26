@@ -1,27 +1,14 @@
 var mongoose = require('mongoose');
 
 var UserSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
-  address: String,
-  school: String,
-  username: String,
-  email: String,
-  idNumber: String,
-  ipAddress: String,
+  studentNumber: String,
   phone: String,
-  education: String,
   fullname: String,
-  password: String,
   role: String,
-  card: Number,
   sex: String,
-  file: {
-    type: [Object],
-    default: []
-  },
-  avatar: Number,
-  course: [Object],
+  dateOfRegisteration: Date,
+  profileCompeleted: Boolean,
+  smsCode: String,
 });
 
 var User = mongoose.model('User', UserSchema);
